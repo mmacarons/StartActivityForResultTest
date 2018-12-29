@@ -17,6 +17,7 @@ public class MainActivity extends BaseActivity {
     final static int REQUEST_FOR_USER_NAME = 1000;
     final static int REQUEST_FOR_USER_BIRTHDAY = 1001;
     final static int REQUEST_FOR_PICTURE_GALLERY = 1002;
+    final static int REQUEST_FOR_PICTURE_CROP = 1003;
 
     private android.widget.TextView nameTxt;
     private android.widget.Button nameInputBtn;
@@ -58,6 +59,10 @@ public class MainActivity extends BaseActivity {
 //                String imagePath = selectedImageUri.getPath();
 
                 Glide.with(mContext).load(selectedImageUri).into(profileImg);
+
+//                cropImage(selectedImageUri);
+//                버그발생해서 나중에~~
+
             }
 
         }
@@ -108,6 +113,27 @@ public class MainActivity extends BaseActivity {
     public void setValues() {
 
     }
+
+    private void cropImage(Uri uri) {
+
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");
+        intent.putExtra("crop", true);
+
+//        잘라낸 파일의 크기
+        intent.putExtra("outputX", 320);
+        intent.putExtra("outputY", 320);
+
+//        잘라내는 비율
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+
+        intent.putExtra("return-data", true);
+
+        startActivityForResult(intent, REQUEST_FOR_PICTURE_CROP);
+
+    }
+
 
     @Override
     public void bindViews() {
