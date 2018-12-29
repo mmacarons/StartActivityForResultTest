@@ -33,6 +33,12 @@ public class MainActivity extends BaseActivity {
 
         if (requestCode == REQUEST_FOR_USER_NAME) {
 //            사용자 이름을 입력받아온 경우.
+
+            if (resultCode == RESULT_OK) {
+                String userName = data.getStringExtra("이름");
+                nameTxt.setText(userName);
+            }
+
             Toast.makeText(mContext, "사용자이름", Toast.LENGTH_SHORT).show();
         }
         else if (requestCode == REQUEST_FOR_USER_BIRTHDAY) {
