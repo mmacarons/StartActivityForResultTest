@@ -5,15 +5,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class EditUserInfoActivity extends BaseActivity {
+public class BirthDayInputActivity extends BaseActivity {
 
-    private android.widget.EditText nameEdt;
+    private android.widget.EditText birthDayEdt;
     private android.widget.Button okBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_user_info);
+        setContentView(R.layout.activity_birth_day_input);
         bindViews();
         setupEvents();
         setValues();
@@ -21,13 +21,13 @@ public class EditUserInfoActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
+
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
     }
 
     @Override
@@ -38,7 +38,7 @@ public class EditUserInfoActivity extends BaseActivity {
     @Override
     public void bindViews() {
         this.okBtn = (Button) findViewById(R.id.okBtn);
-        this.nameEdt = (EditText) findViewById(R.id.nameEdt);
+        this.birthDayEdt = (EditText) findViewById(R.id.birthDayEdt);
 
     }
 }
